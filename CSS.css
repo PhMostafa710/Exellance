@@ -1,0 +1,273 @@
+body {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.449);
+    font-family: 'Cairo', sans-serif;
+}
+body::before,
+body::after {
+    position: absolute;
+    top: 30%;
+    transform: translate(-50% , -50%);
+    color: gold;
+    font-size: 250px;
+    opacity: .5;
+    transform: scale(.8);
+}
+
+body::before {
+    content: "{";
+    left: 40%;
+    animation: change-opacity 2s linear forwards;
+    }
+
+body::after {
+    content: "}";
+    left: 50%;
+    animation: change-opacity 2s .5s linear forwards;   /* this .5s is an estimated value*/
+ }
+
+@keyframes change-opacity {
+    0% ,  50% ,  100% {
+        opacity: .5;
+        transform: scale(.8);
+    }
+    
+    25% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    75% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    100% {
+        color: transparent;
+    }
+
+}
+
+@media (max-width:767px) {
+    body::before {
+        left: 35%;
+    }
+
+    body::after {
+        left: 55%;
+    }
+
+    body::before,
+    body::after {
+        font-size: 150px;
+    }
+} 
+
+.container {
+    height: 100vh;
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0;
+    animation: turn-1 3s 2.5s linear forwards;
+}
+
+@keyframes turn-1 {
+    100% {
+        opacity: 1;
+    }
+}
+
+.right-icon .icon {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: .8s;
+}
+
+.right {
+    position: relative;
+    top: -10px;
+    animation-name: top;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes top {
+    50% {
+        top: -20px;
+    }
+
+    100% {
+        top: -10px;
+    }
+}
+
+.left {
+    position: relative;
+    top: -10px;
+    animation-name: bottom;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bottom {
+    50% {
+        top: 10px;
+    }
+
+    100% {
+        top: -10px;
+    }
+}
+
+.right-icon  .icon {
+    width: 16px;
+    height: 40px;
+    transition: .8s;
+    position: absolute;
+    margin-left: 5px;
+    padding: 4px;
+    height: 55px;
+}
+
+.right-icon .icon:first-child {
+    border: 3px solid #14b8a6;
+    border-radius: 50%;
+    background-color: transparent;
+    transform: rotate(33deg);
+    z-index: 100;
+}
+
+.right-icon .icon:first-child::before {
+    content: "";
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    animation-name: turn;
+    animation-duration: 2.25s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+ @keyframes turn {
+    0% {
+        right: -5px;
+        top: 50%;
+        background-color: white;
+    }    
+
+    25% {
+        top: 0;
+        right: 5px;
+        background-color: #06b6d4;
+    }
+
+    50% {
+        right: calc(100% - 5px);
+        background-color: #14b8a6;
+    }
+
+    75% {
+        top: 100%;
+        right: 5px;
+        background-color: #41ec46;
+    }
+
+    100% {
+        right: -5px;
+        top: 50%;
+    }
+    
+}  
+
+.right-icon .icon:nth-child(2) {
+    border: 3px solid #14b8a6;
+    border-radius: 50%;
+    background-color: transparent;
+    transform: rotate(-33deg);
+}
+
+.right-icon .icon:last-child {
+    border: 3px solid #41ec46;
+    border-radius: 50%;
+    background-color: transparent;
+    transform: rotate(90deg);
+}
+
+.thanks {
+    margin-top: 80px;
+
+}
+
+.thanks h1 {
+    color: rgba(255, 217, 0, 0.532);
+    font-size: 50px;
+    margin: 0;
+    margin-top: 50px;
+}
+
+
+.thanks  span {
+    color: gold;
+}
+
+.thanks p {
+    font-size: 30px;
+    position: relative;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: .2px white;
+    color: transparent;
+} 
+
+.thanks p::before {
+    content: "Up To Level Two";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    white-space: nowrap;
+    -webkit-text-fill-color: #41ec46;
+    overflow: hidden; 
+    animation-name: move-right;
+    animation-duration: 6s;
+    animation-delay: 4s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+} 
+
+
+@keyframes  move-right{
+    100% {
+        width: 100%;
+    }
+}
+
+
+@media (max-width:767px) {
+    .left {
+        margin-right: 40px;
+    }
+    
+    .thanks h1 {
+        font-size: 24px;
+        text-align: center;
+        margin-left: 30px;
+    }
+
+    .thanks p {
+        font-size: 20px;
+        margin-left: 30px;
+    }
+}
